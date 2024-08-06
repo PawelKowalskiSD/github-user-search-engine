@@ -9,5 +9,4 @@ class GithubUserSearchEngineApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }
