@@ -17,7 +17,7 @@ the name of the branch and the last commit saved in sha.
 *  Search user repositories
 
 ## Technologies
-* Spring Boot 3.2.2
+* Spring Boot 3.3.2
 * Gradle
 * Mockito
 * Wiremock
