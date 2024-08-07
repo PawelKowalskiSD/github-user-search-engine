@@ -32,9 +32,9 @@ class GithubUserServiceTest {
     void should_return_all_user_Repositories() {
         //Given
         List<GithubUserRepo> userRepos = getDataStub();
-        when(githubUserService.getAllRepository(USERNAME)).thenReturn(userRepos);
+        when(githubClient.findAll(USERNAME)).thenReturn(userRepos);
         //When
-        List<GithubUserRepo> result = githubClient.findAll(USERNAME);
+        List<GithubUserRepo> result = githubUserService.getAllRepository(USERNAME);
         //Then
         assertNotNull(result);
         assertEquals(USERNAME, result.getFirst().owner().login());
@@ -46,9 +46,9 @@ class GithubUserServiceTest {
     void should_return_all_branches() {
         //Given
         List<GithubUserRepo> userRepos = getDataStub();
-        when(githubUserService.findAllBranch(USERNAME, REPOSITORY_NAME)).thenReturn(userRepos.get(0).branches());
+        when(githubClient.findAll(USERNAME, REPOSITORY_NAME)).thenReturn(userRepos.get(0).branches());
         //When
-        List<GithubUserBranch> result = githubClient.findAll(USERNAME, REPOSITORY_NAME);
+        List<GithubUserBranch> result = githubUserService.findAllBranch(USERNAME, REPOSITORY_NAME);
         //Then
         assertNotNull(result);
         assertEquals(userRepos.getFirst().branches().getFirst().name(), result.getFirst().name());
@@ -62,9 +62,9 @@ class GithubUserServiceTest {
     void should_find_User_by_Username() {
         //Given
         List<GithubUserRepo> userRepos = getDataStub();
-        when(githubUserService.findUserByUsername(USERNAME)).thenReturn(userRepos);
+        when(githubClient.findAll(USERNAME)).thenReturn(userRepos);
         //When
-        List<GithubUserRepo> result = githubClient.findAll(USERNAME);
+        List<GithubUserRepo> result = githubUserService.getAllRepository(USERNAME);
         //Then
         assertNotNull(result);
         assertEquals(USERNAME, result.getFirst().owner().login());
