@@ -5,7 +5,6 @@ import com.example.githubusersearchengine.domain.user.model.GithubUserCommit;
 import com.example.githubusersearchengine.domain.user.model.GithubUserRepo;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GithubUserService {
 
@@ -25,7 +24,7 @@ public class GithubUserService {
                         false,
                         getBranchForRepo(name, b.name())
                 ))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<GithubUserBranch> findAllBranch(String username, String repoName) {
@@ -44,6 +43,6 @@ public class GithubUserService {
                         new GithubUserCommit(
                                 branch.commit().sha())
                 ))
-                .collect(Collectors.toList());
+                .toList();
     }
 }

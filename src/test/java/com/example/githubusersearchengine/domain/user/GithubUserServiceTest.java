@@ -34,7 +34,7 @@ class GithubUserServiceTest {
         List<GithubUserRepo> userRepos = getDataStub();
         when(githubUserService.getAllRepository(USERNAME)).thenReturn(userRepos);
         //When
-        List<GithubUserRepo> result = githubUserService.getAllRepository(USERNAME);
+        List<GithubUserRepo> result = githubClient.findAll(USERNAME);
         //Then
         assertNotNull(result);
         assertEquals(USERNAME, result.getFirst().owner().login());
@@ -48,7 +48,7 @@ class GithubUserServiceTest {
         List<GithubUserRepo> userRepos = getDataStub();
         when(githubUserService.findAllBranch(USERNAME, REPOSITORY_NAME)).thenReturn(userRepos.get(0).branches());
         //When
-        List<GithubUserBranch> result = githubUserService.findAllBranch(USERNAME, REPOSITORY_NAME);
+        List<GithubUserBranch> result = githubClient.findAll(USERNAME, REPOSITORY_NAME);
         //Then
         assertNotNull(result);
         assertEquals(userRepos.getFirst().branches().getFirst().name(), result.getFirst().name());
@@ -64,7 +64,7 @@ class GithubUserServiceTest {
         List<GithubUserRepo> userRepos = getDataStub();
         when(githubUserService.findUserByUsername(USERNAME)).thenReturn(userRepos);
         //When
-        List<GithubUserRepo> result = githubUserService.findUserByUsername(USERNAME);
+        List<GithubUserRepo> result = githubClient.findAll(USERNAME);
         //Then
         assertNotNull(result);
         assertEquals(USERNAME, result.getFirst().owner().login());
